@@ -18,6 +18,8 @@ from django.urls import path
 from donation.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.static import serve
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -58,20 +60,22 @@ urlpatterns = [
     path('delete_donor/<int:pid>',delete_donor, name='delete_donor'),
     path('changepwd_volunteer',changepwd_volunteer, name='changepwd_volunteer'),
     path('collection_req',collection_req,name='collection_req'),
-path('donationcollection_detail/<int:pid>',donationcollection_detail, name='donationcollection_detail'),
-path('donationrec_volunteer',donationrec_volunteer,name='donationrec_volunteer'),
-path('donationrec_detail/<int:pid>',donationrec_detail, name='donationrec_detail'),
-path('donationnotrec_volunteer',donationnotrec_volunteer,name='donationnotrec_volunteer'),
-path('donationdelivered_volunteer',donationdelivered_volunteer,name='donationdelivered_volunteer'),
-path('profile_volunteer',profile_volunteer,name='profile_volunteer'),
-path('donationrec_admin',donationrec_admin,name='donationrec_admin'),
-path('donationnotrec_admin',donationnotrec_admin,name='donationnotrec_admin'),
-path('donationdelivered_admin',donationdelivered_admin,name='donationdelivered_admin'),
-path('donationdetail_donor/<int:pid>',donationdetail_donor, name='donationdetail_donor'),
-path('profile_donor',profile_donor,name='profile_donor'),
-path('gallery',gallery,name='gallery'),
-path('all_donations',all_donations,name='all_donations'),
-path('delete_donation/<int:pid>',delete_donation, name='delete_donation'),
-path('all_volunteer',all_volunteer,name='all_volunteer'),
-path('delete_volunteer/<int:pid>',delete_volunteer, name='delete_volunteer'),
+    path('donationcollection_detail/<int:pid>',donationcollection_detail, name='donationcollection_detail'),
+    path('donationrec_volunteer',donationrec_volunteer,name='donationrec_volunteer'),
+    path('donationrec_detail/<int:pid>',donationrec_detail, name='donationrec_detail'),
+    path('donationnotrec_volunteer',donationnotrec_volunteer,name='donationnotrec_volunteer'),
+    path('donationdelivered_volunteer',donationdelivered_volunteer,name='donationdelivered_volunteer'),
+    path('profile_volunteer',profile_volunteer,name='profile_volunteer'),
+    path('donationrec_admin',donationrec_admin,name='donationrec_admin'),
+    path('donationnotrec_admin',donationnotrec_admin,name='donationnotrec_admin'),
+    path('donationdelivered_admin',donationdelivered_admin,name='donationdelivered_admin'),
+    path('donationdetail_donor/<int:pid>',donationdetail_donor, name='donationdetail_donor'),
+    path('profile_donor',profile_donor,name='profile_donor'),
+    path('gallery',gallery,name='gallery'),
+    path('all_donations',all_donations,name='all_donations'),
+    path('delete_donation/<int:pid>',delete_donation, name='delete_donation'),
+    path('all_volunteer',all_volunteer,name='all_volunteer'),
+    path('delete_volunteer/<int:pid>',delete_volunteer, name='delete_volunteer'),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
