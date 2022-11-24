@@ -76,6 +76,4 @@ urlpatterns = [
     path('delete_donation/<int:pid>',delete_donation, name='delete_donation'),
     path('all_volunteer',all_volunteer,name='all_volunteer'),
     path('delete_volunteer/<int:pid>',delete_volunteer, name='delete_volunteer'),
-    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
