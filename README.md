@@ -39,13 +39,16 @@ Goensho Tshamkhang, Thimphu wangsisina (old age house).
 
 # System Scope
 1. Registration and login of users 
-2. Chat 3. Gallery 
+2. Chat 
+3. Gallery 
 4. Donation
 5. Send notification via email 
 6. Feedback
 
 System prototype link 
-
 https://www.figma.com/file/GfvpbTb70q26T8BtX2xsSZ/Group2_Share-Hope
+
+Website Link
+https://sharehope.pythonanywhere.com
 
 
