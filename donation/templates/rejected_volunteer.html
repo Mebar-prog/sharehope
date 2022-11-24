@@ -1,0 +1,60 @@
+{% extends 'admin_base.html' %}
+{% block main %}
+  
+  <main id="main" class="main">
+
+    <div class="span12" style="border: 1px solid orange" > 
+
+
+    <div class="pagetitle"><h1>Rejected Volunteer</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'admin_home' %}">Admin</a></li>
+          <li class="breadcrumb-item active">Manage Volunteer</li>
+          <li class="breadcrumb-item active">Rejected Volunteer</li>
+
+        </ol>
+      </nav>
+    </div>  
+
+
+
+
+<div class="card shadow">
+    <div class="card-body">
+
+<div class="container-fluid">
+
+        <table class="table table-bordered table-sm" id="example">
+            <thead>
+                <tr>
+                    <th>S. No.</th>
+                    <th>Volunteer Name</th>
+                    <th>Email ID</th>
+                    <th>Contact</th>
+                    <th>Status</th>
+                    <th>Reg. Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in volunteer %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.user.first_name}} {{i.user.last_name}}</td>
+                    <td>{{i.user.username}}</td>
+                    <td>{{i.contact}}</td>
+                    <td>{{i.status}}</td>
+                    <td>{{i.regdate}}</td>
+                    <td><a href="{% url 'view_volunteerdetail' i.id %}" class="text-primary">View Details</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+</div>
+</div>
+
+{% endblock %}
+
+

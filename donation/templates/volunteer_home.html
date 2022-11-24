@@ -1,0 +1,69 @@
+{% extends 'volunteer_base.html' %}
+{% block main  %}
+
+<main id="main" class="main">
+
+  <div class="span12" style="border: 1px solid orange" > 
+
+
+  <div class="pagetitle"><h1>Dashboard</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'volunteer_home' %}">Volunteer</a></li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+    </nav>
+  </div>  
+
+  <div class="row">
+    <div class="col-sm-4 p-2">
+        <div class="card shadow bg-light">
+            <div class="card-body">
+            <h4 class="text-dark">New Donation Collection Req.</h4>
+            <h5 style="color : #F1948A">{{totalCollectionReq}}</h5>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'collection_req' %}" class="text-white">View Details >></a>
+        </div>
+        </div>
+    </div>
+    <div class="col-sm-4 p-2">
+        <div class="card shadow bg-light">
+            <div class="card-body">
+                <h4 class="text-dark">Total Donation Received</h4>
+                <h5 style="color : #F1948A">{{totalRecDonation}}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'donationrec_volunteer' %}" class="text-white">View Details >></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 p-2">
+        <div class="card shadow bg-light">
+            <div class="card-body">
+            <h4 class="text-dark">Total Donation not Received</h4>
+            <h5 style="color : #F1948A">{{totalNotRecDonation}}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'donationnotrec_volunteer' %}" class="text-white">View Details >></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 p-2">
+        <div class="card shadow bg-light">
+            <div class="card-body">
+            <h4 class="text-dark">Total Donation Delivered </h4>
+            <h5 style="color : #F1948A"> {{totalDonationDelivered}}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'donationdelivered_volunteer' %}" class="text-white">View Details >></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+  {% endblock  %}

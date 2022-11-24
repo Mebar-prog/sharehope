@@ -1,0 +1,151 @@
+{% extends 'admin_base.html' %}
+{% block main %}
+  
+  <main id="main" class="main">
+
+       <div class="span" style="border: 1px solid orange" > 
+    <div class="pagetitle">
+      <h1>Volunteer Details</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'admin_home' %}">Admin</a></li>
+          <li class="breadcrumb-item active">Donation Management</li>
+          <li class="breadcrumb-item active">All Volunteer</li>
+          <li class="breadcrumb-item active">Volunteer Details</li>
+
+      
+
+          
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+
+
+
+
+<div class="card shadow">
+    <div class="card-body">
+
+<div class="container-fluid">
+
+         <table class="table table-bordered">
+ <tr align="center">
+
+
+    <tr>
+    <th>Volunteer Name</th>
+    <td>{{volunteer.user.first_name}} {{volunteer.user.last_name}}</td>
+    <th>Donor Contact</th>
+    <td>{{volunteer.contact}}</td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td>{{volunteer.user.username}}</td>
+      <th>Registration Date</th>
+    <td>{{volunteer.regdate}}</td>
+
+  </tr>
+
+
+
+<tr>
+     <th>Volunteer PIC</th>
+    <td><img src="{{volunteer.userpic.url}}" width="100px" height="100px"></td>
+         <th>ID Card PIC</th>
+    <td><img src="{{volunteer.idpic.url}}" width="100px" height="100px"></td>
+  </tr>
+
+     <tr>
+    <th>Address</th>
+    <td colspan="3">{{volunteer.address}}</td>
+
+  </tr>
+
+<tr>
+
+     <th>About</th>
+    <td colspan="3">{{volunteer.aboutme}}</td>
+  </tr>
+
+{% if volunteer.status == 'pending' %}
+ <form method="post">
+    {% csrf_token %}
+      <tr>
+    <th>Status</th>
+    <td colspan="3">
+        <select class="form-control" name="status" required>
+            <option value="accept">Accept</option>
+            <option value="reject">Reject</option>
+        </select>
+    </td>
+  </tr>
+
+
+    <tr>
+    <th>Admin Remark</th>
+    <td colspan="3"><textarea name="adminremark" class="form-control" required="true"></textarea></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td colspan="3">
+    <button id="button2" type="submit" class="btn btn-primary pull-left">
+    Update <i class="fa fa-arrow-circle-right"></i>
+                                </button>
+
+                                                    </td>
+                                                </tr>
+     {% else %}
+     <tr>
+    <th>Status</th>
+    <td class="text-capitalize">{{volunteer.status}}</td>
+     <th>Updation Date</th>
+    <td>{{volunteer.updationdate}}</td>
+  </tr>
+
+     <tr>
+    <th>Admin Remark</th>
+    <td colspan="3">{{volunteer.adminremark}}</td>
+  </tr>
+
+     {% endif %}
+</form>
+
+</table>
+</div>
+</div>
+</div>
+
+{% for message in messages %} 
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Great!',
+        text: m,
+        type: 'success',
+        })
+    </script>
+    {% endif %}
+{% endfor %}
+{% for message in messages %} 
+    {% if message.tags == 'error' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Oops',
+        text: m,
+        type: 'error',
+        }).then(function (result) {
+        if (true) {
+        window.location.href = "view_volunteerdetail";
+        }
+        })  
+    </script>
+    {% endif %}
+{% endfor %}
+
+
+{% endblock %}

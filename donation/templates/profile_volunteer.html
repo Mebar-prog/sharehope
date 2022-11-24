@@ -1,0 +1,145 @@
+{% extends 'volunteer_base.html' %}
+{% block main  %}
+
+<main id="main" class="main">
+  <div class="span" style="border: 1px solid orange" > 
+    <div class="pagetitle"><h1>Profile</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{%url 'volunteer_home %'}">Volunteer</a></li>
+          <li class="breadcrumb-item active">Profile</li>
+        </ol>
+      </nav>
+    </div><br />
+    
+    <div class="card shadow m-2">
+      <div class="card-body">
+  <div class="container-fluid">
+    <form method="POST"  enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-row">
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="p-2">First Name</label>
+              <input type="text" name="firstname" placeholder="Enter First Name"  class="form-control"  pattern="[A-Za-z]+" value="{{volunteer.user.first_name}}">
+            </div>
+          </div><br />
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="p-2">Last Name</label>
+              <input type="text" name="lastname" placeholder="Enter Last Name"  class="form-control" pattern="[A-Za-z]+" value="{{volunteer.user.last_name}}">
+              
+            </div>
+          </div><br />
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="p-2">Email ID</label>
+              <input type="email" name="email" readonly placeholder="Email Address" required class="form-control" value="{{volunteer.user.username}}">
+            </div>
+          </div><br />
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="p-2">Contact</label>
+              <input type="tel" name="contact" id="phone" maxlength="8" pattern="([1]{1}[7]{1}[0-9]{6}|[7]{1}[7]{1}[0-9]{6})" placeholder="Contact Number" required class="form-control" value="{{volunteer.contact}}">
+            </div>
+          </div><br />
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="p-2">User PIC</label>
+              <input type="file" name="userpic" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <img src = "{{volunteer.userpic.url}}" width="100" height="100">
+            </div>
+          </div>
+
+         
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="p-2">ID Proof PIC</label>
+              <input type="file" name="idpic" class="form-control">
+            </div>
+          </div>
+
+           <div class="col-sm-6">
+            <div class="form-group">
+              <img src = "{{volunteer.idpic.url}}" width="100" height="100">
+            </div>
+          </div><br><br />
+
+
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label class="p-2">Address</label>
+              <textarea name="address" class="form-control" placeholder="Full Address" style="width:350px">{{volunteer.address}}</textarea>
+            </div>
+          </div>
+       <br />
+
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label class="p-2">About Yourself</label>
+            <textarea name="aboutme" class="form-control" placeholder="About Yourself" style="width:350px; height: 60px">{{volunteer.aboutme}}</textarea>
+          </div>
+        </div> <br /><br /><br />
+
+        <div class="text-center">
+          <a href="{% url 'volunteer_home'%}">
+          <button id="button1" type="button" class="btn btn-secondary">Cancel
+          </button>
+        </a>
+
+          <button  id="button2" type="submit" class="btn btn-primary">Submit</button>
+        </div><br /><br /><br /><br />
+      </div>
+      </div>
+    </form>
+  </div>
+  </div>
+  </div>
+  {% for message in messages %} 
+  {% if message.tags == 'success' %}
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+      var m = "{{ message }}";
+      swal({
+      title: 'Great!',
+      text: m,
+      type: 'success',
+      }).then(function (result) {
+      if (true) {
+      window.location.href = "profile_volunteer";
+      }
+      })  
+  </script>
+  {% endif %}
+{% endfor %}
+{% for message in messages %} 
+  {% if message.tags == 'error' %}
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+      var m = "{{ message }}";
+      swal({
+      title: 'Oops!',
+      text: m,
+      type: 'error',
+      }).then(function (result) {
+      if (true) {
+      window.location.href = "profile_volunteer";
+      }
+      })  
+  </script>
+  {% endif %}
+{% endfor %}
+
+{% endblock %} 
+
+

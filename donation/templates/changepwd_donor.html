@@ -1,0 +1,143 @@
+{% extends 'donor_base.html' %}
+{% block main  %}
+
+
+<main id="main" class="main">
+    <div class="span12" style="border: 1px solid orange" > 
+      <div class="pagetitle"><h1>Change Password</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{%url 'donor_home %'}">Donor</a></li> 
+            <li class="breadcrumb-item active">Change Password</li>
+          </ol>
+        </nav>
+      </div>
+      <!-- End Page Title -->
+
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script>
+          function checkpass(){
+            if(document.changepassword.newpassword.value!=document.changepassword.confirmpassword.value)
+            {
+            swal({
+            title: 'Oops',
+            text: 'Password and Confirm Password does not match',
+            type: 'error',
+            }).then(function (result) {
+            if (true) {
+            window.location.href = "changepwd_donor";
+            }
+            })  
+            document.changepassword.confirmpassword.focus();
+            return false;
+            }
+            return true;
+            }
+      </script>
+
+
+<div class="card shadow">
+    <div class="card-body">
+<div class="container-fluid">
+<form method="POST" name = "changepassword" onsubmit="return checkpass();">
+    {% csrf_token %}
+    <div class="form-row">
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="password" style="color:black;">Current Password</label>
+                <input type="password" name="currentpassword" id = "currentpassword" placeholder="Enter Current Password"  class="form-control" required>
+            </div>
+
+            
+        </div>
+    </div><br>
+
+    <div class="form-row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label style="color:black;">New Password</label>
+                <input type="password" name="newpassword" placeholder="Enter New Password"  class="form-control" id="newpassword" minlength="8" required>
+
+              </div>
+
+        </div>
+    </div><br>
+
+    <div class="form-row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label style="color:black;">Confirm New Password</label>
+                <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Enter New Password Again"  class="form-control" minlength="8" required />
+            </div>
+        </div>
+
+    </div><br>
+    <a href="{% url 'donor_home' %}">
+    <input id="button1" type="button" value="Cancel" class="m-2 px-3 btn btn-dark" >
+</a>
+    <input id="button2" type="submit" value="Submit" class="m-2 px-3 btn btn-dark">
+</form>
+</div>
+</div>
+</div>
+
+<!-- pass visibility -->
+
+{% for message in messages %} 
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Great!',
+        text: m,
+        type: 'success',
+        }).then(function (result) {
+        if (true) {
+        window.location.href = "donorlogin";
+        }
+        })  
+    </script>
+    {% endif %}
+{% endfor %}
+
+{% for message in messages %} 
+    {% if message.tags == 'info' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Oops',
+        text: m,
+        type: 'info',
+        }).then(function (result) {
+        if (true) {
+        window.location.href = "changepwd_donor";
+        }
+        })  
+    </script>
+    {% endif %}
+{% endfor %}
+
+{% for message in messages %} 
+    {% if message.tags == 'error' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Oops',
+        text: m,
+        type: 'error',
+        }).then(function (result) {
+        if (true) {
+        window.location.href = "changepwd_donor";
+        }
+        })  
+    </script>
+    {% endif %}
+{% endfor %}
+
+{% endblock  %}
+
+

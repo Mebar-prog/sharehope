@@ -1,0 +1,107 @@
+{% extends 'admin_base.html' %}
+{% block main %}
+
+
+
+  <main id="main" class="main">
+
+    <div class="span12" style="border: 1px solid orange" > 
+
+
+    <div class="pagetitle"><h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'admin_home' %}">Admin</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div>  
+
+    <div class="row">
+      <div class="col-sm-4 p-2">
+          <div class="card shadow bg-light">
+              <div class="card-body">
+              <h4 class="text-dark">Total Donations</h4>
+              <h5 style="color : #F1948A">{{totaldonations}}</h5>
+          </div>
+          <div class="card-footer">
+              <a href="{% url 'all_donations' %}" class="text-white">View Details >></a>
+          </div>
+          </div>
+      </div>
+      <div class="col-sm-4 p-2">
+          <div class="card shadow bg-light">
+              <div class="card-body">
+                  <h4 class="text-dark">Total Donors</h4>
+                  <h5 style="color : #F1948A">{{totaldonors}}</h5>
+              </div>
+              <div class="card-footer">
+                  <a href="{% url 'manage_donor' %}" class="text-white">View Details >></a>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-4 p-2">
+          <div class="card shadow bg-light">
+              <div class="card-body">
+              <h4 class="text-dark">Total Volunteers</h4>
+              <h5 style="color : #F1948A">{{totalvolunteers}}</h5>
+              </div>
+              <div class="card-footer">
+                  <a href="{% url 'all_volunteer' %}" class="text-white">View Details >></a>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-4 p-2">
+          <div class="card shadow bg-light">
+              <div class="card-body">
+              <h4 class="text-dark">New Donation Request</h4>
+              <h5 style="color : #F1948A"> {{totalpendingdonations}}</h5>
+              </div>
+              <div class="card-footer">
+                  <a href="{% url 'pending_donation' %}" class="text-white">View Details >></a>
+              </div>
+          </div>
+      </div>
+  
+      <div class="col-sm-4 p-2">
+          <div class="card shadow bg-light">
+              <div class="card-body">
+              <h4 class="text-dark">Total Accepted Donation</h4>
+              <h5 style="color : #F1948A"> {{totalaccepteddonations}}</h5>
+              </div>
+              <div class="card-footer">
+                  <a href="{% url 'accepted_donation' %}" class="text-white">View Details >></a>
+              </div>
+          </div>
+      </div>
+  
+  <div class="col-sm-4 p-2">
+          <div class="card shadow bg-light">
+              <div class="card-body">
+              <h4 class="text-dark">Total Donation Delivered</h4>
+              <h5 style="color : #F1948A"> {{totaldelivereddonations}}</h5>
+              </div>
+              <div class="card-footer">
+                  <a href="{% url 'donationdelivered_admin' %}" class="text-white">View Details >></a>
+              </div>
+          </div>
+      </div>
+  
+      <div class="col-sm-4 p-2">
+          <div class="card shadow bg-light">
+              <div class="card-body">
+              <h4 class="text-dark">Total Donation Area</h4>
+              <h5 style="color : #F1948A"> {{totaldonationareas}}</h5>
+              </div>
+              <div class="card-footer">
+                  <a href="{% url 'manage_area' %}" class="text-white">View Details >></a>
+              </div>
+          </div>
+      </div>
+  
+  
+  </div>
+
+
+{% endblock %}
+

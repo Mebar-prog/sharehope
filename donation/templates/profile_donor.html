@@ -1,0 +1,114 @@
+{% extends 'donor_base.html' %}
+{% block main  %} 
+
+<main id="main" class="main">
+    <div class="span" style="border: 1px solid orange" > 
+      <div class="pagetitle" style="padding-left: 10px;" ><h1>Profile</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="donor_home.html">Donor</a></li><!-- {%url 'donor_home %'} -->
+            <li class="breadcrumb-item active">Profile</li>
+          </ol>
+        </nav>
+      </div><br />
+<div class="card shadow m-2">
+    <div class="card-body">
+<div class="container-fluid">
+<form method="POST"  enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label style="color:black;">First Name</label>
+                <input type="text" name="firstname" placeholder="Enter First Name"  class="form-control"  pattern="[A-Za-z]+" value="{{donor.user.first_name}}">
+            </div>
+        </div><br>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label style="color:black;">Last Name</label>
+                <input type="text" name="lastname" placeholder="Enter Last Name"  class="form-control" pattern="[A-Za-z]+" value="{{donor.user.last_name}}">
+            </div>
+        </div><br>
+
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label style="color:black;">Email ID</label>
+                <input type="email" name="email" readonly placeholder="Email Address" required class="form-control" value="{{donor.user.username}}">
+            </div>
+        </div><br>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label style="color:black;">Contact</label>
+                <input type="tel" name="contact" id="phone" pattern="([1]{1}[7]{1}[0-9]{6}|[7]{1}[7]{1}[0-9]{6})" maxlength="8" placeholder="Contact Number" required class="form-control" value="{{donor.contact}}">
+            </div>
+        </div><br>
+
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label style="color:black;">User PIC</label>
+                <input type="file" name="userpic" class="form-control">
+            </div>
+        </div><br>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <img src = "{{donor.userpic.url}}" width="300" height="100">
+            </div>
+        </div><br>
+
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label style="color:black;">Address</label>
+                <textarea name="address" class="form-control" placeholder="Full Address">{{donor.address}}</textarea>
+            </div>
+        </div><br>
+
+    </div>
+    <a href="{% url 'donor_home' %}">
+    <input id="button1" type="button" value="Cancel" class="m-2 px-3 btn btn-dark">
+</a>
+    <input id="button2" type="submit" value="Update" class="m-2 px-3 btn btn-dark" style=" background-color: #ec6904">
+</form>
+</div>
+</div>
+</div>
+
+{% for message in messages %} 
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Great!',
+        text: m,
+        type: 'success',
+        }).then(function (result) {
+        if (true) {
+        window.location.href = "profile_donor";
+        }
+        })  
+    </script>
+    {% endif %}
+{% endfor %}
+{% for message in messages %} 
+    {% if message.tags == 'error' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Oops!',
+        text: m,
+        type: 'error',
+        }).then(function (result) {
+        if (true) {
+        window.location.href = "profile_donor";
+        }
+        })  
+    </script>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,86 @@
+
+{% extends 'donor_base.html' %}
+{% block main  %}
+
+<main id="main" class="main">
+
+  <div class="span12" style="border: 1px solid orange" > 
+
+
+  <div class="pagetitle"><h1>Dashboard</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'donor_home' %}">Donor</a></li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+    </nav>
+  </div>  
+
+  <div class="row">
+    <div class="col-sm-4 p-2">
+        <div class="card shadow bg-light">
+            <div class="card-body">
+            <h4 class="text-dark">My Total Donations</h4>
+            <h5 style="color : #F1948A">{{donationcount}}</h5>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'donation_history' %}" class="text-white">View Details >></a>
+        </div>
+        </div>
+    </div>
+    <div class="col-sm-4 p-2">
+        <div class="card shadow bg-light">
+            <div class="card-body">
+                <h4 class="text-dark">My Accepted Donations</h4>
+                <h5 style="color : #F1948A">{{acceptedcount}}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'donation_history' %}" class="text-white">View Details >></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 p-2">
+        <div class="card shadow bg-light">
+            <div class="card-body">
+            <h4 class="text-dark">My Rejected Donations</h4>
+            <h5 style="color : #F1948A">{{rejectedcount}}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'donation_history' %}" class="text-white">View Details >></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 p-2">
+        <div class="card shadow bg-light">
+            <div class="card-body">
+            <h4 class="text-dark">My Pending Donations</h4>
+            <h5 style="color : #F1948A"> {{pendingcount}}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'donation_history' %}" class="text-white">View Details >></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 p-2">
+        <div class="card shadow bg-light">
+            <div class="card-body">
+            <h4 class="text-dark">My Successfully Delivered Donation  </h4>
+            <h5 style="color : #F1948A"> {{deliveredcount}}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'donation_history' %}" class="text-white">View Details >></a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+  {% endblock  %}

@@ -1,0 +1,270 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Required meta tags -->
+
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/b737d0e149.js" crossorigin="anonymous"></script>
+    
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    function checkpass(){
+        if(document.signup.pwd.value!=document.signup.cpwd.value)
+        {
+        swal({
+        title: 'Oops',
+        text: 'Password and Confirm Password does not match',
+        type: 'error',
+        }).then(function (result) {
+        if (true) {
+        window.location.href = "volunteer_reg";
+        }
+        })  
+        document.signup.cpwd.focus();
+        return false;
+        }
+        return true;
+        }
+    </script>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: white;
+        }
+        h2,h5,h6{
+            color: #fff;
+            text-align: center;
+            
+    
+           
+        }
+        h1,p{
+            color: white;
+        }
+        h2{
+            margin-top: 30px;
+        }
+
+        .row{
+            background-color: white;
+            height: 40rem;
+
+        }
+        img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            margin-bottom: auto;
+            width: 50%;
+        }         
+        .Form{
+            border-radius: 0;
+        }
+        .col1{
+            background-color: #F46A06;
+        }
+        .col2{
+            background-color: #041125;
+        }
+    
+        * {box-sizing: border-box;}
+
+        body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  padding: 10px;
+  padding-top: 12px;
+  background-color: #F46A06;
+  border-radius: 3px;
+  color: white;
+  min-width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+.input-field {
+  width: 90%;
+  padding: 10px;
+  outline: none;
+  height: 40px;
+}
+
+.input-field:focus {
+  border: 2px solid #f46A06;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #f46A06;
+  color: white;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  padding-top: 8px;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+
+}
+.rr{
+    color: #F46A06;
+}
+    </style>
+  </head>
+  <body>
+    <section class="Form my-5 mx-5">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-lg-5 col1">
+                    <img src="{% static 'images/Share.jpg' %}" class="img-fluid" alt="">
+                    <h2 class="font-weight-bold py-3">Welcome Back!</h2>
+                    <h5 class="font-weight-bold py-3">Please register to continue</h5>
+                    <h6>"No one has ever become poor from giving"</h6>   
+                </div>
+
+                <div class="col-lg-7 px-5 pt-4 col2">   
+                    <form action="" method="POST" name ="signup" onsubmit="return checkpass();" enctype="multipart/form-data" style="max-width:500px;margin:auto">
+                        {% csrf_token %}
+                        <h1 class="font-weight-bold py-3">Volunteer Registration</h2>
+
+                        <div class="input-container">
+                            <i class="fa-solid fa-user icon"></i>
+                            <input class="input-field" type="text" placeholder="First name" name="firstname" style="margin-right:10px;" pattern="[A-Za-z]+" required>
+                            <i class="fa-solid fa-user icon"></i>
+                            <input class="input-field" type="text" placeholder="Last name" name="lastname" pattern="[A-Za-z]+" required>
+                        </div>
+                        <div class="input-container">
+                            <i class="fa fa-envelope icon"></i>
+                            <input class="input-field" type="email" placeholder="Email" name="email" style="margin-right:10px;" required>
+                            <i class=" fa fa-address-book icon"></i>
+                            <input class="input-field" type="tel"  name="contact" id="phone" placeholder="Phone number" pattern="([1]{1}[7]{1}[0-9]{6}|[7]{1}[7]{1}[0-9]{6})" maxlength="8" required>
+                        </div>
+                        
+                        <div class="input-container">
+                            <i class="fa fa-key icon"></i>
+                            <input class="input-field" type="password" placeholder="Password" name="pwd" style="margin-right:10px;" minlength="8" required>
+                            <i class="fa fa-key icon"></i>
+                            <input class="input-field" type="password" placeholder="Confirm Password" name="cpwd" minlength="8" required>
+                        </div>
+
+                        
+
+                        <div class="input-container">
+                            <!-- <i class="fa-solid fa-location-dot icon "></i> -->
+                            <textarea name="address" class="form-control" placeholder="Full Address" required></textarea>
+                        </div>
+
+                        <div class="input-container">
+                            <!-- <i class="fa-solid fa-user icon"></i> -->
+                            <textarea name="aboutme" class="form-control" placeholder="About Yourself" required></textarea>
+                        </div>
+
+                        <div class="input-container" style="padding-bottom:0px;">
+                            <label class="col-md-6" style="color:white;">User Picture</label>
+                            <label class="col-md-6" style="color:white;">CID Picture</label>
+
+                        </div>
+
+                        <div class="input-container">
+                            <i class="fa-solid fa-id-card-clip icon"></i>                            
+                            <input class="input-field" type="file" name="userpic" required>
+                           
+                            <i class="fa-solid fa-id-card-clip icon"></i>                            
+                            <input class="input-field" type="file"  name="idpic" required>
+                        </div>
+                        
+                        <div class="input-container">
+                            <button style="margin-top: 3rem;" type="submit" class="btn">Create Account</button>                                                           
+                        </div>
+                        <p>Already have an account? <a href="{% url 'volunteer_login' %}" class="rr">Go to Login</a></p>
+                      
+
+                        <div class="col-md-12">
+                        
+                        </div>
+                        <br><br>
+                        <div class="col-md-12">
+                        <center>
+                            <a href="{% url 'index' %}"><i class="fa-solid fa-house" style="color: white; font-size: large; padding-bottom: 50px; "></i></a>
+                        </center>
+                        </div>
+
+                        
+                                         
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    {% for message in messages %} 
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Welcome',
+        text: m,
+        type: 'success',
+        }).then(function (result) {
+        if (true) {
+        window.location.href = "volunteer_login";
+        }
+        })  
+    </script>
+    {% endif %}
+{% endfor %}
+
+{% for message in messages %} 
+    {% if message.tags == 'error' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Opps',
+        text: m,
+        type: 'error',
+        }).then(function (result) {
+        if (true) {
+        window.location.href = "volunteer_reg";
+        }
+        })  
+    </script>
+    {% endif %}
+{% endfor %} 
+</body>
+</html>

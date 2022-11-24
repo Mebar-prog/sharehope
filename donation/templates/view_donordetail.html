@@ -1,0 +1,66 @@
+{% extends 'admin_base.html' %}
+{% block main  %}
+
+  
+  <main id="main" class="main">
+
+       <div class="span" style="border: 1px solid orange" > 
+    <div class="pagetitle">
+      <h1>Donor Details</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'admin_home' %}">Admin</a></li>
+          <li class="breadcrumb-item active">Manage Donor</li>
+          <li class="breadcrumb-item active">Donor Detail</li>
+
+          
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+
+
+
+
+
+
+
+<div class="card shadow">
+    <div class="card-body">
+
+<div class="container-fluid">
+
+         <table class="table table-bordered">
+ <tr align="center">
+<td colspan="4" style="font-size:20px;color:dark">
+ Donor Details</td></tr>
+
+    <tr>
+    <th>Donor Name</th>
+    <td>{{donor.user.first_name}} {{donor.user.last_name}}</td>
+    <th>Donor Contact</th>
+    <td>{{donor.contact}}</td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td>{{donor.user.username}}</td>
+    <th>Donor PIC</th>
+    <td><img src="{{donor.userpic.url}}" width="100px" height="100px"></td>
+  </tr>
+<tr align="center">
+<td colspan="4" style="font-size:20px;color:dark; text-align: center;">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<a href="{% url 'delete_donor' donor.user.id %}" onclick="return confirm();" class="text-danger"><i class="bi bi-trash3" style="font-size:25px;">
+
+</i></a></td></tr>
+
+
+</table>
+</div>
+</div>
+</div>
+
+
+    {% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'donor_base.html' %}
+{% block main  %}
+
+<main id="main" class="main">
+    <div class="span12" style="border: 1px solid orange" > 
+      <div class="pagetitle"><h1>Donate Now</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="donor_home.html">Donor</a></li>
+            <li class="breadcrumb-item active">Donate Now</li>
+          </ol>
+        </nav>
+      </div>
+      <!-- End Page Title -->
+<div class="card shadow">
+    <div class="card-body">
+      
+<div class="container-fluid">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <labels style="color:black">Donation Name </label>
+                <select name="donationname"  class="form-control">
+                    <option value="Food Donation">Food Donation</option>
+                    <option value="Cloth Donation">Cloth Donation</option>
+                    <option value="Footwear Donation">Footwear Donation</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label style="color:black">Donation Image</label>
+                <input type="file" name="donationpic" class="form-control" required >
+            </div>
+        </div><br>
+
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label style="color:black">Donation Collection Address</label>
+                <textarea name="collectionloc"  class="form-control" placeholder="Enter Full Address" required></textarea>
+            </div>
+        </div><br>
+
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label style="color:black">Description</label>
+                <textarea name="description" class="form-control" placeholder="Special note for donation" required></textarea>
+            </div>
+        </div><br>
+
+    </div>
+    <a href="{% url 'donor_home' %}">
+    <input id="button1" type="button" value="Cancel" class="m-2 px-3 btn btn-dark">
+</a>
+    <input id="button2" type="submit" value="Donate" class="m-2 px-3 btn btn-dark" style="background-color:#e3791c;">
+</form>
+</div>
+</div>
+</div>
+</main>
+
+{% for message in messages %} 
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Thank You!',
+        text: m,
+        type: 'success',
+        }).then(function (result) {
+        if (true) {
+        window.location.href = "donation_history";
+        }
+        })  
+    </script>
+    {% endif %}
+{% endfor %}
+
+{% for message in messages %} 
+    {% if message.tags == 'error' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Opps',
+        text: m,
+        type: 'error',
+        }).then(function (result) {
+        if (true) {
+        window.location.href = "donate_now";
+        }
+        })  
+    </script>
+    {% endif %}
+{% endfor %}
+
+{% endblock  %}

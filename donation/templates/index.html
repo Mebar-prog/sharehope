@@ -1,0 +1,470 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+    <title>Share Hope</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;900&display=swap"
+      rel="stylesheet"/>
+    <!-- bootstrap-icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"/>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/custom.min.css' %}" />
+  </head>
+
+  <body data-bs-spy="scroll" data-bs-target="#main_menu">
+    <div id="home"></div>
+    <nav id="main_menu" class="navbar navbar-expand-md navbar-light sticky-top py-4">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'aboutus' %}"><img class="resize" src="{% static 'images/logo.png' %}" alt=""></a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#mainnav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="mainnav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li><a class="nav-link" href="#main_menu">Home</a></li>
+            <li><a class="nav-link" href="{% url 'aboutus' %}">About Us</a></li>
+            <li><a class="nav-link" href="{% url 'gallery' %} ">Gallery</a></li>
+            <li><a class="nav-link" href="{% url 'donorlogin' %}">Donate</a></li>
+            <li><a class="nav-link" href="#footer">Contact Us</a></li>
+            <!-- <li><a class="nav-link" href="login.html">Login</a></li> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Login
+              </a>
+              <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="{% url 'admin_login' %}">Admin</a></li>
+                <li><a class="dropdown-item" href="{% url 'donorlogin' %}">Donor</a></li>
+                <li><a class="dropdown-item" href="{% url 'volunteer_login' %}">Volunteer</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section
+      id="slider"
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+      data-bs-touch="true"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="{% static 'images/banner_01.jpg' %}"
+            alt=""
+            class="img-fluid d-block"
+          />
+          <div class="position-absolute top-0 start-0 h-100 w-100">
+            <div class="container h-100">
+              <div class="row h-100">
+                <div class="col-md-6 justify-content-center d-flex flex-column">
+                  <h2 class="title">Donate For The Cause</h2>
+                  <p>
+                    <a class="btn btn-hero" href="{% url 'donorlogin' %}"
+                      >Donate Now</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/637b383fb0d6371309d02f59/1gicl7e5d';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+
+    <section id="about" class="pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 align-self-center about-img">
+            <img src="{% static 'images/genshotshamkhang.jpeg' %}" alt="" />
+          </div>
+
+          <div class="col-md-6 align-self-center about-text">
+            <h2 class="title-md">About Us</h2>
+            <h6 class="title-sm">Goensho Tsamkhang</h6>
+            <p>
+              The Goensho Tshamkhang, an initiative of His Majesty The King, has
+              addressed the needs of elderly people who have nowhere to go to.
+              It was opened in July 2018. Goensho Tshamkhang, a retreat for
+              elderly people, built under His Majesty’s People’s Project, in
+              Thimphu Wangsisina.The retreat, currently accommodates 19
+              inhabitants who are recipients of His Majesty’s Gensho Zhabto
+              Kidu. Recipients of the Gensho Zhabto Kidu are senior citizens who
+              do not have family, or whose families are unable to care for them.
+            </p>
+            <p>The retreat has:</p>
+            <ol>
+              <li>Administrative Offices</li>
+              <li>Nurse’s Office</li>
+              <li>Common kitchen</li>
+              <li>Common areas with spaces for prayers and recreation</li>
+            </ol>
+
+            <a href="{% url 'aboutus' %}" class="btn btn-hero">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="newsletter" class="py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-4">
+            <h4><b>COMPASSION</b></h4>
+            <h4>
+              We believe that all perons deserve to be treated with respect,
+              compassion and dignity.
+            </h4>
+          </div>
+          <div class="col-md-4">
+            <h4><b>OPTIMISM</b></h4>
+            <h4>
+              We believe the ability of people to strive for better lives, and
+              we help provide them wth the means to achieve their dreams.
+            </h4>
+          </div>
+          <div class="col-md-4">
+            <h4><b>INTEGRITY</b></h4>
+            <h4>
+              We will ensure honesty and fairness in all our actions. We will
+              always do the right thing.
+            </h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="help" class="pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 align-self-center about-text">
+            <br /><br />
+            <h6 class="title-md text-center">How to Help</h6>
+            <br />
+            <ol>
+              <li>
+                To enable a link of communication and interactions among
+                Volunteers, donors and the needy.
+              </li>
+              <br />
+              <li>
+                The people wishing to donate will be able to see all the options
+                available with them to do the same.
+              </li>
+              <br />
+              <li>
+                The donated item shall safely reach the intended needy persons
+                after this interaction.
+              </li>
+              <br />
+              <li>
+                It is very much flexible to work and man power required is very
+                less.
+              </li>
+              <br />
+            </ol>
+            <center>
+              <a href="{% url 'help' %}" class="btn btn-hero">Learn More</a>
+            </center>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallary" class="pb-5">
+      <div class="container">
+        <div class="row mb-3">
+          <div class="col-md-8 offset-md-2 text-center">
+            <h2 class="title-md">Our Gallery</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 mb-4">
+            <div class="card border-0 overflow-hidden">
+              <a href="{% url 'gallery' %}"
+                ><img
+                  src="{% static 'images/img3.jpeg' %}"
+                  alt=""
+                  class="card-img"
+              /></a>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card border-0 overflow-hidden">
+              <a href="{% url 'gallery' %}"
+                ><img
+                  src="{% static 'images/img4.jpeg' %}"
+                  alt=""
+                  class="card-2"
+              /></a>
+            </div>
+          </div>
+          <div class="col-md-4 mb-2">
+            <div class="card border-0 overflow-hidden">
+              <a href="{% url 'gallery' %}"
+                ><img
+                  src="{% static 'images/img1.jpeg' %}"
+                  alt=""
+                  class="card-3"
+              /></a>
+            </div>
+          </div>
+          <div class="col-md-8 mb-2">
+            <div class="card border-0 overflow-hidden">
+              <a href="{% url 'gallery' %}"
+                ><img
+                  src="{% static 'images/img5.jpeg' %}"
+                  alt=""
+                  class="card-4"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="service" class="pb-5">
+      <div class="container">
+        <div class="row mb-3">
+          <div class="col-md-8 offset-md-2 text-center">
+            <h2 class="title-md">Giving is Virtue</h2>
+            <p>
+              Always give without remembering and always receive without
+              forgetting. You can give without loving, but you cannot love
+              without giving. The simplest acts of kindness are by far more
+              powerful than a thousand heads bowing in prayer. Real generosity
+              toward the future lies in giving all to the present.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 pt-2">
+            <div class="card border-0 p-4">
+              <div class="card-body">
+                <i class="bi bi-people-fill"></i>
+                <h4 class="card-title">Become a volunteer</h4>
+                <p class="card-text">
+                  Volunteering is at the very core of being a human. No one has
+                  made it through life without someone else’s help.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 pt-2">
+            <div class="card border-0 p-4">
+              <div class="card-body">
+                <i class="bi bi-display"></i>
+                <h4 class="card-title">Happy Giving</h4>
+                <p class="card-text">
+                  Remember that the happiest people are not those getting more,
+                  but those giving more.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 pt-2">
+            <div class="card border-0 p-4">
+              <div class="card-body">
+                <i class="bi bi-activity"></i>
+                <h4 class="card-title">Donation</h4>
+                <p class="card-text">
+                  Giving a little is better than not giving at all. Even the
+                  smallest gift to charity can make a huge impact.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="pb-5">
+      <div class="container">
+        <div class="row mb-3">
+          <div class="col-md-8 offset-md-2 text-center">
+            <h2 class="title-md">Meet the Team</h2>
+            <p>
+              We are a team! One person struggles, we all struggle. One person
+              triumphs, we all triumph.
+            </p>
+          </div>
+        </div>
+        <div class="row gx-5">
+          <div class="col-md-3 pt-2">
+            <div class="card border-0">
+              <img
+                src="{% static 'assets/img/sherab.jpg' %}"
+                alt=""
+                class="position-absolute top-0 start-0 w-75 h-50"  
+                />
+              
+              <div class="card-body">
+                <ul class="social">
+                  <li>
+                    <a href="https://www.facebook.com/sherab.wangchuck/"><i class="bi bi-facebook"></i></a>
+                  </li>
+                  <li>
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/doofenshmirtz_11/"><i class="bi bi-instagram"></i></a>
+                  </li>
+                </ul>
+                <h4 class="card-title">Sherab Wangchuk</h4>
+                <p class="card-text">Web Developer</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 pt-2">
+            <div class="card border-0">
+              <img
+                src="{% static 'assets/img/kencho.jpg' %}"
+                alt=""
+                class="position-absolute top-0 start-0 w-75 h-50" 
+              />
+              <div class="card-body">
+                <ul class="social">
+                  <li>
+                    <a href="https://www.facebook.com/kencho.pemo.3"><i class="bi bi-facebook"></i></a>
+                  </li>
+                  <li>
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                  </li>
+                </ul>
+                <h4 class="card-title">Kencho Pem</h4>
+                <p class="card-text">Web Developer</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 pt-2">
+            <div class="card border-0">
+              <img
+                src="{% static 'assets/img/dorji.jpg' %}"
+                alt=""
+                class="position-absolute top-0 start-0 w-75 h-50" 
+              />
+              <div class="card-body">
+                <ul class="social">
+                  <li>
+                    <a href="https://www.facebook.com/dee.zang.332"><i class="bi bi-facebook"></i></a>
+                  </li>
+                  <li>
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                  </li>
+                </ul>
+                <h4 class="card-title">Dorji Zangmo</h4>
+                <p class="card-text">Web Developer</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 pt-2">
+            <div class="card border-0">
+              <img
+                src="{% static 'assets/img/sancha.jpg' %}"
+                alt=""
+                class="position-absolute top-0 start-0 w-75 h-50"  
+                />
+              
+              <div class="card-body">
+                <ul class="social">
+                  <li>
+                    <a href="https://www.facebook.com/sanchbir.subba"><i class="bi bi-facebook"></i></a>
+                  </li>
+                  <li>
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                  </li>
+                </ul>
+                <h4 class="card-title">Sancha Bir Subba</h4>
+                <p class="card-text">Web Developer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer" class="pt-5 pb-2">
+      <div class="container">
+        <div class="row gx-5">
+          <div class="col-md-4">
+            <h3>Contact Us</h3>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <i class="bi bi-envelope"></i> sharehope@gmail.com
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-telephone"></i> +975 17407445
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-geo-alt"></i> Goensho Tshamkhang, Thimphu
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h3>My Account</h3>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="{% url 'donorlogin' %}">Donor</a></li>
+              <li class="mb-2"><a href="{% url 'volunteer_login' %}">Volunteer</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h3>Get to know more about us</h3>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p class="copy">
+              Copyright © 2022 Share Hope. All Rights Reserved.
+            </p>
+          </div>
+        </div>
+        <p class="top">
+          <a href="#home"><i class="bi bi-arrow-up-square-fill"></i></a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

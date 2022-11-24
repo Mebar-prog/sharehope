@@ -1,0 +1,155 @@
+{% extends 'volunteer_base.html' %}
+{% block main  %}
+<main id="main" class="main">
+
+
+  <div class="span" style="border: 1px solid orange" > 
+
+ <div class="pagetitle"><h1>Donation Collection Request</h1>
+
+   <nav>
+     <ol class="breadcrumb">
+       <li class="breadcrumb-item"><a href="{% url 'volunteer_home' %}">Volunteer</a></li>
+       <li class="breadcrumb-item active">Donation Collection Request</li>
+       <li class="breadcrumb-item active">Donation Collection Detail View</li>
+
+
+     </ol>
+   </nav>
+ </div><!-- End Page Title -->
+
+
+<div class="card shadow">
+ <div class="card-body">
+<div class="container-fluid">
+<table class="table table-bordered">
+<tr align="center">
+<td colspan="4" style="font-size:16px;color:black;">
+Donor Details</td></tr>
+
+ <tr>
+ <th>Donor Name</th>
+ <td>{{donation.donor.user.first_name}} {{donation.donor.user.last_name}}</td>
+ <th>Donor Contact</th>
+ <td>{{donation.donor.contact}}</td>
+</tr>
+<tr>
+ <th>Email</th>
+ <td>{{donation.donor.user.username}}</td>
+ <th>Donor PIC</th>
+ <td><img src="{{request.user.volunteer_set.all.0.userpic.url}}" width="100px" height="100px"></td>
+</tr>
+
+<tr align="center">
+<td colspan="4" style="font-size:16px;color:black;">
+Donation Details</td></tr>
+
+<tr>
+ <th>Donation Name</th>
+ <td>{{donation.donationname}}</td>
+  <th>Donation PIC</th>
+ <td><img src="{{donation.donationpic.url}}" width="100px" height="100px"></td>
+</tr>
+
+  <tr>
+ <th>Collection Location</th>
+ <td>{{donation.collectionloc}}</td>
+  <th>Donation Date</th>
+ <td>{{donation.donationdate}}</td>
+</tr>
+
+   <tr>
+ <th>Status</th>
+ <td class="text-capitalize"><span class="bg-success font-weight-bold text-light py-1 px-3 rounded-pill">{{donation.status}}</span></td>
+  <th>Updation Date</th>
+ <td>{{donation.updationdate}}</td>
+</tr>
+  <tr>
+ <th>Admin Remark</th>
+ <td colspan="3">{{donation.adminremark}}</td>
+</tr>
+<tr>
+ <th>Donation Area</th>
+ <td colspan="3">{{donation.donationarea.areaname}}</td>
+
+</tr>
+
+  <tr>
+ <th>Volunteer</th>
+ <td colspan="3">{{donation.volunteer.user.username}} [{{donation.volunteer.user.first_name}} {{donation.volunteer.user.last_name}}]</td>
+</tr>
+
+{% if not donation.volunteerremark %}
+<form method="post">
+ {% csrf_token %}
+   <tr>
+ <th>Donation Received ?</th>
+ <td colspan="3">
+     <input type="radio" name="status" value="Donation Received" required> Donation Received
+      <input type="radio" name="status" value="Donation Not Received" required> Donation Not Received
+ </td>
+</tr>
+
+
+<tr>
+ <th>Volunteer Remark</th>
+ <td colspan="3"><textarea class="form-control" placeholder="Volunteer Remark" name="volunteerremark" required></textarea></td>
+</tr>
+
+<tr>
+  <td>&nbsp;</td>
+  <td colspan="3">
+
+  <button id="button2" type="submit" class="btn btn-primary pull-left" style="align-content: center;">Update
+  </button>
+  </td>
+</tr>
+
+</form>
+{% else %}
+</table>
+
+<tr>
+ <th>Volunteer Remark</th>
+ <td colspan="3">{{donation.volunteerremark}}</td>
+</tr>
+
+
+
+  {% endif %}
+
+</table>
+</div>
+</div>
+</div>
+</div>
+{% for message in messages %} 
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Great!',
+        text: m,
+        type: 'success',
+        })
+    </script>
+    {% endif %}
+{% endfor %}
+{% for message in messages %} 
+    {% if message.tags == 'error' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal({
+        title: 'Oops!',
+        text: m,
+        type: 'error',
+        })
+    </script>
+    {% endif %}
+{% endfor %}
+
+  </main>
+
+{% endblock %}

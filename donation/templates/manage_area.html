@@ -1,0 +1,56 @@
+{% extends 'admin_base.html' %}
+{% block main %}
+  
+  
+  <main id="main" class="main">
+
+       <div class="span" style="border: 1px solid orange" > 
+    <div class="pagetitle">
+      <h1>Manage Donation Area</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'admin_home' %}">Admin</a></li>
+          <li class="breadcrumb-item active">Donation Area</li>
+          <li class="breadcrumb-item active">Manage Area</li>
+
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+
+
+
+
+<div class="card shadow">
+    <div class="card-body">
+<div class="container-fluid">
+
+        <table class="table table-bordered table-sm" id="example">
+            <thead>
+                <tr>
+                    <th>SI. No.</th>
+                    <th>AreaName</th>
+                    <th>CreationDate</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in area %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.areaname}}</td>
+                    <td>{{i.creationdate}}</td>
+                    <td><center>
+                      <a href="{% url 'edit_area' i.id %}" class="text-primary"><i class="bi bi-pencil-square" style="font-size:22px;"></i></a>
+                        <br><a href="{% url 'delete_area' i.id %}" class="text-danger" onclick="return confirm('Are You Sure?')"><i class="bi bi-trash3" style="font-size:22px;"></i></a>
+                      </center></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+</div>
+</div>
+
+
+    {% endblock %}    

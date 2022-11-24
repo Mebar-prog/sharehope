@@ -1,0 +1,52 @@
+{% extends 'volunteer_base.html' %}
+{% block main  %}
+
+<main id="main" class="main">
+
+  <div class="span" style="border: 1px solid orange" > 
+
+    <div class="pagetitle">
+      <h1>New Donation Collection Request</h1>
+  
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'volunteer_home' %}">Volunteer</a></li>
+          <li class="breadcrumb-item active">New Donation Collection Request</li>
+
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+   
+<div class="card shadow">
+    <div class="card-body">       
+<div class="container-fluid">
+
+        <table class="table table-bordered table-sm" id="example">
+            <thead>
+                <tr>
+                    <th>SI. No.</th>
+                    <th>Donation Name</th>
+                    <th>Donation Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in donation %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.donationname}}</td>
+                    <td>{{i.donationdate}}</td>
+
+                    <td><a href="{% url 'donationcollection_detail' i.id %}" class="text-primary">View Details</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+           
+        </table>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+{% endblock %}

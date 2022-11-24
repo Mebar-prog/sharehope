@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script src="https://kit.fontawesome.com/983c6f291f.js" crossorigin="anonymous"></script>
+   
+  <title>Volunteer Dashboard </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+
+  
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- gg -->
+  
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+      <a href="{% url 'volunteer_home' %}" class="logo d-flex align-items-center">
+        <img src="{% static 'assets/img/hope1.png' %}"alt="">
+
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+         
+
+      </ul>
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+
+  <aside id="sidebar" class="sidebar">
+
+    <div class="rounded mx-auto d-block text-center">
+      <img src="{{request.user.volunteer_set.all.0.userpic.url}}" width="80" height="100" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+      <div class="media-body text-center">
+        <div class="mt-4">
+         
+        <h3 class="mb-0">Volunteer</h3>
+        <p class="text-muted mb-0">{{request.user.username}}</p>
+         </div>
+       </div><br><br>
+       <ul class="sidebar-nav" id="sidebar-nav">
+         <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'volunteer_home' %}">
+          <i class="bi bi-grid"></i><span>Dashboard</span>
+        </a>
+<li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'collection_req' %}">
+          <i class="fa-solid fa-people-roof"></i><span>Collection Request</span>
+        </a>  <!-- {% url 'collection_req' %} --> 
+
+      </li><!-- End Forms Nav -->
+
+
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="fa-solid fa-people-roof"></i><span>Collection History</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'donationrec_volunteer' %}"><i class="bi bi-circle"></i><span>Donation Recieved</span>
+            </a>  
+          </li>
+          <li>
+            <a href="{% url 'donationnotrec_volunteer' %}">
+              <i class="bi bi-circle"></i><span>Donation Not Recieved</span>
+            </a> 
+          </li>
+          <li>
+            <a href="{% url 'donationdelivered_volunteer' %}">
+              <i class="bi bi-circle"></i><span>Donation Delivered</span>
+            </a>  
+          </li> 
+       </ul>
+     </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'profile_volunteer' %}">
+          <i class="fa-solid fa-user"></i><span>Profile</span>
+        </a>  
+
+      </li><!-- End Forms Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'changepwd_volunteer' %}">
+          <i class="fa-sharp fa-solid fa-key"></i>
+          <span>Change Password</span>
+        </a> 
+      </li><!-- End Icons Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'logout' %}">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>Logout</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+
+    </ul>
+ <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/637b383fb0d6371309d02f59/1gicl7e5d';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+  </aside><!-- End Sidebar-->
+  {% block main %}
+
+  {% endblock %}
+
+<!--end page content holder-->
+
+</body>
+</html>
